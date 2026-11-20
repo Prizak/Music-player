@@ -1,0 +1,22 @@
+# Baseline Profile manual (HSPL). Cobre a inicialização e os caminhos críticos
+# (biblioteca, lista, MiniPlayer, NowPlaying, serviço de reprodução).
+# Regenere com um módulo de Macrobenchmark em dispositivo para um perfil medido (ver TASKS.md).
+HSPLcom/example/musicplayer/MainActivity;->**(**)**
+HSPLcom/example/musicplayer/MainActivityKt;->**(**)**
+HSPLcom/example/musicplayer/viewmodel/MusicViewModel;->**(**)**
+HSPLcom/example/musicplayer/viewmodel/**;->**(**)**
+HSPLcom/example/musicplayer/data/**;->**(**)**
+HSPLcom/example/musicplayer/service/**;->**(**)**
+HSPLcom/example/musicplayer/ui/screens/MusicLibraryScreenKt;->**(**)**
+HSPLcom/example/musicplayer/ui/screens/NowPlayingScreenKt;->**(**)**
+HSPLcom/example/musicplayer/ui/components/**;->**(**)**
+HSPLcom/example/musicplayer/ui/theme/**;->**(**)**
+Lcom/example/musicplayer/MainActivity;
+Lcom/example/musicplayer/viewmodel/MusicViewModel;
+Lcom/example/musicplayer/service/PlaybackService;
+Lcom/example/musicplayer/service/PlayCounter;
+Lcom/example/musicplayer/ui/components/AlbumArtKt;
+Lcom/example/musicplayer/ui/components/TrackItemKt;
+Lcom/example/musicplayer/ui/components/MiniPlayerKt;
+Lcom/example/musicplayer/ui/screens/MusicLibraryScreenKt;
+Lcom/example/musicplayer/ui/screens/NowPlayingScreenKt;

@@ -1,0 +1,323 @@
+<!DOCTYPE html><html lang="en" class="dark"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Now Playing — Resonance</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">/** @type {import('tailwindcss').Config} */
+globalThis.tailwind = globalThis.tailwind || {};
+globalThis.tailwind.config = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        'accent': '#FFB800',
+        'accent-rank-1': '#FFD700',
+        'accent-rank-2': '#C0C0C0',
+        'accent-rank-3': '#CD7F32',
+        'cyan-glow': '#00E5FF',
+        'coral-glow': '#FF4D6D',
+        'amber-glow': '#FFAA00',
+        'light-primary': '#E63956',
+        'light-on-primary': '#121212',
+        'light-primary-container': '#FFE8EC',
+        'light-on-primary-container': '#5C0015',
+        'light-secondary': '#006874',
+        'light-on-secondary': '#FFFFFF',
+        'light-secondary-container': '#97F0FF',
+        'light-on-secondary-container': '#001F24',
+        'light-surface': '#FAF8FD',
+        'light-surface-dim': '#DCD8E0',
+        'light-surface-bright': '#FAF8FD',
+        'light-surface-container-lowest': '#FFFFFF',
+        'light-surface-container-low': '#F4F2F8',
+        'light-surface-container': '#EEEBF2',
+        'light-surface-container-high': '#E8E5EC',
+        'light-surface-container-highest': '#E2DFE7',
+        'light-on-surface': '#1B1B1F',
+        'light-on-surface-variant': '#47464F',
+        'light-outline': '#777680',
+        'light-outline-variant': '#C8C5D0',
+        'dark-primary': '#C3C0FF',
+        'dark-on-primary': '#231B98',
+        'dark-primary-container': '#3B35B4',
+        'dark-on-primary-container': '#E3DFFF',
+        'dark-secondary': '#4FD8EB',
+        'dark-on-secondary': '#00363D',
+        'dark-secondary-container': '#004F58',
+        'dark-on-secondary-container': '#97F0FF',
+        'dark-surface': '#121316',
+        'dark-surface-dim': '#121316',
+        'dark-surface-bright': '#38393D',
+        'dark-surface-container-lowest': '#0D0E11',
+        'dark-surface-container-low': '#1A1B1F',
+        'dark-surface-container': '#1E1F24',
+        'dark-surface-container-high': '#292A2F',
+        'dark-surface-container-highest': '#34353A',
+        'dark-on-surface': '#E4E2E6',
+        'dark-on-surface-variant': '#C8C5D0',
+        'dark-outline': '#918F9A',
+        'dark-outline-variant': '#47464F',
+      },
+      borderRadius: {
+        'sm': '8px',
+        'DEFAULT': '12px',
+        'md': '16px',
+        'lg': '20px',
+        'xl': '24px',
+        'full': '9999px',
+      },
+      spacing: {
+        'gutter-xs': '4px',
+        'gutter-sm': '8px',
+        'gutter-md': '12px',
+        'gutter-lg': '16px',
+        'gutter-xl': '24px',
+        'section': '32px',
+        'page-margin': '16px',
+      },
+      fontFamily: {
+        'display': ['"Jost"', 'sans-serif'],
+        'headline': ['"Jost"', 'sans-serif'],
+        'title': ['"Instrument Sans"', 'sans-serif'],
+        'body': ['"Instrument Sans"', 'sans-serif'],
+        'label': ['"Instrument Sans"', 'sans-serif'],
+      },
+      fontSize: {
+        'display-lg': ['40px', { lineHeight: '48px', letterSpacing: '-0.25px', fontWeight: '700' }],
+        'display-lg-mobile': ['32px', { lineHeight: '38px', letterSpacing: '-0.25px', fontWeight: '700' }],
+        'headline-lg': ['34px', { lineHeight: '40px', letterSpacing: '0px', fontWeight: '600' }],
+        'headline-lg-mobile': ['28px', { lineHeight: '34px', letterSpacing: '0px', fontWeight: '600' }],
+        'headline-md': ['24px', { lineHeight: '30px', letterSpacing: '0px', fontWeight: '600' }],
+        'headline-sm': ['20px', { lineHeight: '26px', letterSpacing: '0px', fontWeight: '600' }],
+        'title-lg': ['18px', { lineHeight: '24px', letterSpacing: '0px', fontWeight: '600' }],
+        'title-md': ['16px', { lineHeight: '22px', letterSpacing: '0.15px', fontWeight: '600' }],
+        'title-sm': ['14px', { lineHeight: '20px', letterSpacing: '0.1px', fontWeight: '600' }],
+        'body-lg': ['16px', { lineHeight: '24px', letterSpacing: '0.25px', fontWeight: '400' }],
+        'body-md': ['14px', { lineHeight: '20px', letterSpacing: '0.25px', fontWeight: '400' }],
+        'body-sm': ['12px', { lineHeight: '16px', letterSpacing: '0.4px', fontWeight: '400' }],
+        'label-lg': ['14px', { lineHeight: '20px', letterSpacing: '0.1px', fontWeight: '600' }],
+        'label-md': ['12px', { lineHeight: '16px', letterSpacing: '0.5px', fontWeight: '500' }],
+        'label-sm': ['11px', { lineHeight: '14px', letterSpacing: '0.5px', fontWeight: '500' }],
+      },
+      transitionDuration: {
+        'state-change': '150ms',
+        'surface-enter': '250ms',
+        'surface-exit': '150ms',
+      },
+      transitionDelay: {
+        'state-change': '0ms',
+        'surface-enter': '0ms',
+        'surface-exit': '0ms',
+      },
+      transitionTimingFunction: {
+        'state-change': 'cubic-bezier(0.2, 0, 0, 1)',
+        'surface-enter': 'cubic-bezier(0.05, 0.7, 0.1, 1)',
+        'surface-exit': 'cubic-bezier(0.3, 0, 0.8, 0.15)',
+      },
+    },
+  },
+};
+if (typeof module !== 'undefined') module.exports = globalThis.tailwind.config;
+</script>
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600;700&amp;family=Instrument+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=block" rel="stylesheet">
+  <style>
+    .material-symbols-outlined {
+      display: inline-block;
+      width: 1em;
+      height: 1em;
+      line-height: 1 !important;
+      box-sizing: content-box;
+      overflow: hidden;
+      white-space: nowrap;
+      direction: ltr;
+      vertical-align: middle;
+    }
+
+    /* Tactile UI / Pressed States System */
+    .tactile-btn {
+      transition: all 120ms cubic-bezier(0.2, 0, 0, 1);
+      box-shadow: 0 4px 12px -2px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.25);
+    }
+    .tactile-btn:active {
+      transform: scale(0.94) translateY(1px);
+      box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.7), inset 0 1px 2px rgba(0, 0, 0, 0.5);
+      filter: brightness(0.92);
+    }
+
+    .tactile-hero-play {
+      transition: all 130ms cubic-bezier(0.2, 0, 0, 1);
+      box-shadow: 0 10px 25px -4px rgba(255, 77, 109, 0.45), 0 4px 10px -2px rgba(255, 170, 0, 0.3);
+    }
+    .tactile-hero-play:active {
+      transform: scale(0.92) translateY(2px);
+      box-shadow: inset 0 4px 10px rgba(0, 0, 0, 0.8), inset 0 0 16px rgba(255, 77, 109, 0.5);
+      filter: brightness(0.88);
+    }
+
+    .tactile-icon-btn {
+      transition: all 110ms cubic-bezier(0.2, 0, 0, 1);
+    }
+    .tactile-icon-btn:active {
+      transform: scale(0.88);
+      filter: brightness(0.9);
+    }
+  </style>
+</head>
+<body class="relative bg-dark-surface text-dark-on-surface font-body antialiased min-h-[884px] pb-10 select-none overflow-x-hidden" data-stitch-vh="min-h-[884px]===min-h-screen">
+  <!-- Subtle Dynamic Ambient Gradient Glow -->
+  <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden" aria-hidden="true">
+    <div class="absolute -top-16 left-1/2 -translate-x-1/2 w-96 h-96 rounded-full bg-gradient-to-b from-coral-glow/25 via-[#FF3366]/15 to-transparent blur-3xl"></div>
+    <div class="absolute bottom-10 right-0 w-80 h-80 rounded-full bg-gradient-to-tl from-amber-glow/15 to-transparent blur-3xl"></div>
+  </div>
+
+  <!-- Android System Status Bar Simulation -->
+  <div class="sticky top-0 z-30 bg-dark-surface/90 backdrop-blur-md px-6 pt-3 pb-2 flex items-center justify-between text-dark-on-surface text-body-sm font-medium">
+    <span>09:41</span>
+    <div class="flex items-center gap-2">
+      <span class="material-symbols-outlined text-body-sm">signal_cellular_4_bar</span>
+      <span class="material-symbols-outlined text-body-sm">wifi</span>
+      <span class="material-symbols-outlined text-body-sm">battery_full</span>
+    </div>
+  </div>
+
+  <div class="relative z-10 max-w-md mx-auto px-5 pt-2 flex flex-col gap-5">
+    <!-- Top Action Bar -->
+    <header class="flex items-center justify-between">
+      <a href="../music-library/MusicLibrary.html" class="w-10 h-10 rounded-full bg-dark-surface-container flex items-center justify-center text-dark-on-surface-variant hover:text-dark-on-surface transition-colors">
+        <span class="material-symbols-outlined text-title-lg">expand_more</span>
+      </a>
+      <div class="text-center">
+        <span class="font-label text-label-sm text-coral-glow uppercase tracking-wider font-semibold block" data-design-text-token="label-sm">Playing from Library</span>
+        <span class="font-title text-title-sm text-dark-on-surface font-semibold truncate block max-w-[200px]" data-design-text-token="title-sm">Synthwave Nights 2026</span>
+      </div>
+      <button type="button" aria-label="Audio options" class="w-10 h-10 rounded-full bg-dark-surface-container flex items-center justify-center text-dark-on-surface-variant hover:text-dark-on-surface transition-colors">
+        <span class="material-symbols-outlined text-title-lg">more_vert</span>
+      </button>
+    </header>
+
+    <!-- Large Album Artwork Showcase -->
+    <div class="relative w-full aspect-square rounded-3xl overflow-hidden shadow-2xl shadow-coral-glow/20 border-2 border-coral-glow/30 group">
+      <img src="https://lh3.googleusercontent.com/aida/ALJJyrDjXPJsGsofT6Or13NVHENdxDkZ_2zu7Op-mRJWp0H1ftbO8VRCTIY2i81gTHYVTZcYBDl_OIXHbIXW4vKzmX-YYAmzMrKPUU4i5KJm_5yevY6Rzinsbtl7hgs3J0ZokKJgNVsr38eGj5L70eBjeaauUdPQ2ENgPmv076p6zhi_AOrBq5Ofw1rfUUTni2Yt5Q8gJoDnHspM8ixgakIwnKa4AyIwJWGFzi0WBX6iqFpMR_eaFDyCEDbWLg" alt="Neon Velocity Cover Art" class="w-full h-full object-cover">
+      <div class="absolute inset-0 bg-gradient-to-t from-dark-surface-container-lowest/80 via-transparent to-transparent"></div>
+      
+      <!-- Audio Badge -->
+      <div class="absolute top-4 left-4 px-3 py-1 rounded-full bg-black/60 backdrop-blur-md border border-cyan-glow/40 flex items-center gap-1.5">
+        <span class="material-symbols-outlined text-cyan-glow text-body-sm">graphic_eq</span>
+        <span class="font-label text-label-sm text-cyan-glow font-semibold" data-design-text-token="label-sm">FLAC 24-bit / 96kHz</span>
+      </div>
+
+      <!-- Quick Action: Equalizer Preset Link -->
+      <a href="../equalizer/Equalizer.html" class="absolute top-4 right-4 px-3 py-1 rounded-full bg-black/60 backdrop-blur-md border border-coral-glow/40 flex items-center gap-1.5 hover:border-coral-glow transition-colors">
+        <span class="material-symbols-outlined text-coral-glow text-body-sm">tune</span>
+        <span class="font-label text-label-sm text-coral-glow font-semibold" data-design-text-token="label-sm">DSP</span>
+      </a>
+    </div>
+
+    <!-- Song Metadata & Favorite Toggle -->
+    <div class="flex items-center justify-between px-1">
+      <div class="min-w-0 flex-1 pr-3">
+        <div class="flex items-center gap-2">
+          <h1 class="font-headline text-headline-sm text-dark-on-surface font-bold tracking-tight truncate" data-design-text-token="headline-sm">Neon Velocity</h1>
+          <span class="w-2 h-2 rounded-full bg-coral-glow animate-pulse"></span>
+        </div>
+        <p class="font-body text-body-md text-coral-glow font-medium truncate" data-design-text-token="body-md">Kavinsky &amp; Vector Seven</p>
+        <p class="font-body text-body-sm text-dark-on-surface-variant truncate" data-design-text-token="body-sm">Album: Outrun Legacy • 2026</p>
+      </div>
+      <button type="button" aria-label="Favorite song" class="tactile-btn w-12 h-12 rounded-full bg-dark-surface-container flex items-center justify-center text-coral-glow hover:bg-dark-surface-container-high shadow-sm">
+        <span class="material-symbols-outlined text-headline-sm" style="font-variation-settings: &#39;FILL&#39; 1;">favorite</span>
+      </button>
+    </div>
+
+    <!-- Dynamic Waveform & Progress Track -->
+    <div class="flex flex-col gap-2">
+      <!-- Visual Equalizer Waveform Bars -->
+      <div class="flex items-end justify-between h-9 px-1 gap-1" aria-hidden="true">
+        <div class="w-1 h-3 rounded-full bg-coral-glow/40"></div>
+        <div class="w-1 h-5 rounded-full bg-coral-glow/60"></div>
+        <div class="w-1 h-7 rounded-full bg-coral-glow"></div>
+        <div class="w-1 h-4 rounded-full bg-amber-glow"></div>
+        <div class="w-1 h-8 rounded-full bg-gradient-to-t from-coral-glow to-amber-glow"></div>
+        <div class="w-1 h-6 rounded-full bg-coral-glow"></div>
+        <div class="w-1 h-9 rounded-full bg-gradient-to-t from-coral-glow via-[#FF3366] to-amber-glow"></div>
+        <div class="w-1 h-5 rounded-full bg-amber-glow"></div>
+        <div class="w-1 h-7 rounded-full bg-coral-glow"></div>
+        <div class="w-1 h-4 rounded-full bg-cyan-glow"></div>
+        <div class="w-1 h-8 rounded-full bg-coral-glow"></div>
+        <div class="w-1 h-3 rounded-full bg-dark-surface-container-highest"></div>
+        <div class="w-1 h-6 rounded-full bg-dark-surface-container-highest"></div>
+        <div class="w-1 h-4 rounded-full bg-dark-surface-container-highest"></div>
+        <div class="w-1 h-7 rounded-full bg-dark-surface-container-highest"></div>
+        <div class="w-1 h-5 rounded-full bg-dark-surface-container-highest"></div>
+        <div class="w-1 h-3 rounded-full bg-dark-surface-container-highest"></div>
+        <div class="w-1 h-6 rounded-full bg-dark-surface-container-highest"></div>
+        <div class="w-1 h-4 rounded-full bg-dark-surface-container-highest"></div>
+        <div class="w-1 h-2 rounded-full bg-dark-surface-container-highest"></div>
+      </div>
+
+      <!-- Interactive Progress Scrubber -->
+      <div class="relative w-full h-3 flex items-center cursor-pointer">
+        <div class="w-full bg-dark-surface-container-highest h-1.5 rounded-full overflow-hidden">
+          <div class="bg-gradient-to-r from-coral-glow via-[#FF3366] to-amber-glow h-full rounded-full" style="width: 58%;"></div>
+        </div>
+        <!-- Thumb -->
+        <div class="absolute left-[58%] -translate-x-1/2 w-4 h-4 rounded-full bg-white shadow-md border-2 border-coral-glow"></div>
+      </div>
+
+      <!-- Time Stamps -->
+      <div class="flex items-center justify-between text-dark-outline font-label text-label-sm tabular-nums px-0.5">
+        <span data-design-text-token="label-sm" class="text-coral-glow font-medium">02:08</span>
+        <span data-design-text-token="label-sm">-01:34</span>
+      </div>
+    </div>
+
+    <!-- Main Playback Transport Controls -->
+    <div class="flex items-center justify-between px-2 pt-1">
+      <button type="button" aria-label="Shuffle" class="tactile-icon-btn p-2 text-coral-glow hover:text-white">
+        <span class="material-symbols-outlined text-headline-sm">shuffle</span>
+      </button>
+
+      <button type="button" aria-label="Previous Track" class="tactile-btn w-12 h-12 rounded-full bg-dark-surface-container flex items-center justify-center text-dark-on-surface hover:text-coral-glow">
+        <span class="material-symbols-outlined text-headline-md">skip_previous</span>
+      </button>
+
+      <!-- Primary Play/Pause Hero Button -->
+      <button type="button" aria-label="Pause Track" class="tactile-hero-play w-20 h-20 rounded-full bg-gradient-to-tr from-coral-glow via-[#FF3366] to-amber-glow flex items-center justify-center text-white">
+        <span class="material-symbols-outlined text-display-lg-mobile" style="font-variation-settings: &#39;FILL&#39; 1;">pause</span>
+      </button>
+
+      <button type="button" aria-label="Next Track" class="tactile-btn w-12 h-12 rounded-full bg-dark-surface-container flex items-center justify-center text-dark-on-surface hover:text-coral-glow">
+        <span class="material-symbols-outlined text-headline-md">skip_next</span>
+      </button>
+
+      <button type="button" aria-label="Repeat Mode" class="tactile-icon-btn p-2 text-dark-on-surface-variant hover:text-white">
+        <span class="material-symbols-outlined text-headline-sm">repeat</span>
+      </button>
+    </div>
+
+    <!-- Bottom Secondary Actions: Volume Indicator, Lyrics & Playback Queue -->
+    <div class="flex items-center justify-between p-3.5 rounded-2xl bg-dark-surface-container border border-dark-outline-variant/30 mt-1">
+      <!-- Volume Indicator -->
+      <div class="flex items-center gap-2 flex-1 pr-4">
+        <span class="material-symbols-outlined text-dark-outline text-title-lg">volume_up</span>
+        <div class="w-full bg-dark-surface-container-highest h-1 rounded-full overflow-hidden">
+          <div class="bg-cyan-glow h-full rounded-full" style="width: 72%;"></div>
+        </div>
+      </div>
+
+      <!-- Quick Nav Buttons -->
+      <div class="flex items-center gap-3">
+        <button type="button" class="px-3 py-1.5 rounded-full bg-dark-surface-container-high text-white font-label text-label-sm font-semibold flex items-center gap-1 hover:bg-dark-surface-container-highest transition-colors">
+          <span class="material-symbols-outlined text-body-sm text-coral-glow">lyrics</span>
+          <span data-design-text-token="label-sm" class="text-white">Lyrics</span>
+        </button>
+        <button type="button" class="px-3 py-1.5 rounded-full bg-dark-surface-container-high text-dark-on-surface font-label text-label-sm font-medium flex items-center gap-1 hover:bg-dark-surface-container-highest transition-colors">
+          <span class="material-symbols-outlined text-body-sm">queue_music</span>
+          <span data-design-text-token="label-sm">Queue (12)</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+
+</body></html>

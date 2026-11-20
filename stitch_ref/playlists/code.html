@@ -1,0 +1,330 @@
+<!DOCTYPE html><html lang="en" class="dark"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Playlists — Resonance</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">/** @type {import('tailwindcss').Config} */
+globalThis.tailwind = globalThis.tailwind || {};
+globalThis.tailwind.config = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        'accent': '#FFB800',
+        'accent-rank-1': '#FFD700',
+        'accent-rank-2': '#C0C0C0',
+        'accent-rank-3': '#CD7F32',
+        'cyan-glow': '#00E5FF',
+        'coral-glow': '#FF4D6D',
+        'amber-glow': '#FFAA00',
+        'light-primary': '#E63956',
+        'light-on-primary': '#121212',
+        'light-primary-container': '#FFE8EC',
+        'light-on-primary-container': '#5C0015',
+        'light-secondary': '#006874',
+        'light-on-secondary': '#FFFFFF',
+        'light-secondary-container': '#97F0FF',
+        'light-on-secondary-container': '#001F24',
+        'light-surface': '#FAF8FD',
+        'light-surface-dim': '#DCD8E0',
+        'light-surface-bright': '#FAF8FD',
+        'light-surface-container-lowest': '#FFFFFF',
+        'light-surface-container-low': '#F4F2F8',
+        'light-surface-container': '#EEEBF2',
+        'light-surface-container-high': '#E8E5EC',
+        'light-surface-container-highest': '#E2DFE7',
+        'light-on-surface': '#1B1B1F',
+        'light-on-surface-variant': '#47464F',
+        'light-outline': '#777680',
+        'light-outline-variant': '#C8C5D0',
+        'dark-primary': '#C3C0FF',
+        'dark-on-primary': '#231B98',
+        'dark-primary-container': '#3B35B4',
+        'dark-on-primary-container': '#E3DFFF',
+        'dark-secondary': '#4FD8EB',
+        'dark-on-secondary': '#00363D',
+        'dark-secondary-container': '#004F58',
+        'dark-on-secondary-container': '#97F0FF',
+        'dark-surface': '#121316',
+        'dark-surface-dim': '#121316',
+        'dark-surface-bright': '#38393D',
+        'dark-surface-container-lowest': '#0D0E11',
+        'dark-surface-container-low': '#1A1B1F',
+        'dark-surface-container': '#1E1F24',
+        'dark-surface-container-high': '#292A2F',
+        'dark-surface-container-highest': '#34353A',
+        'dark-on-surface': '#E4E2E6',
+        'dark-on-surface-variant': '#C8C5D0',
+        'dark-outline': '#918F9A',
+        'dark-outline-variant': '#47464F',
+      },
+      borderRadius: {
+        'sm': '8px',
+        'DEFAULT': '12px',
+        'md': '16px',
+        'lg': '20px',
+        'xl': '24px',
+        'full': '9999px',
+      },
+      spacing: {
+        'gutter-xs': '4px',
+        'gutter-sm': '8px',
+        'gutter-md': '12px',
+        'gutter-lg': '16px',
+        'gutter-xl': '24px',
+        'section': '32px',
+        'page-margin': '16px',
+      },
+      fontFamily: {
+        'display': ['"Jost"', 'sans-serif'],
+        'headline': ['"Jost"', 'sans-serif'],
+        'title': ['"Instrument Sans"', 'sans-serif'],
+        'body': ['"Instrument Sans"', 'sans-serif'],
+        'label': ['"Instrument Sans"', 'sans-serif'],
+      },
+      fontSize: {
+        'display-lg': ['40px', { lineHeight: '48px', letterSpacing: '-0.25px', fontWeight: '700' }],
+        'display-lg-mobile': ['32px', { lineHeight: '38px', letterSpacing: '-0.25px', fontWeight: '700' }],
+        'headline-lg': ['34px', { lineHeight: '40px', letterSpacing: '0px', fontWeight: '600' }],
+        'headline-lg-mobile': ['28px', { lineHeight: '34px', letterSpacing: '0px', fontWeight: '600' }],
+        'headline-md': ['24px', { lineHeight: '30px', letterSpacing: '0px', fontWeight: '600' }],
+        'headline-sm': ['20px', { lineHeight: '26px', letterSpacing: '0px', fontWeight: '600' }],
+        'title-lg': ['18px', { lineHeight: '24px', letterSpacing: '0px', fontWeight: '600' }],
+        'title-md': ['16px', { lineHeight: '22px', letterSpacing: '0.15px', fontWeight: '600' }],
+        'title-sm': ['14px', { lineHeight: '20px', letterSpacing: '0.1px', fontWeight: '600' }],
+        'body-lg': ['16px', { lineHeight: '24px', letterSpacing: '0.25px', fontWeight: '400' }],
+        'body-md': ['14px', { lineHeight: '20px', letterSpacing: '0.25px', fontWeight: '400' }],
+        'body-sm': ['12px', { lineHeight: '16px', letterSpacing: '0.4px', fontWeight: '400' }],
+        'label-lg': ['14px', { lineHeight: '20px', letterSpacing: '0.1px', fontWeight: '600' }],
+        'label-md': ['12px', { lineHeight: '16px', letterSpacing: '0.5px', fontWeight: '500' }],
+        'label-sm': ['11px', { lineHeight: '14px', letterSpacing: '0.5px', fontWeight: '500' }],
+      },
+      transitionDuration: {
+        'state-change': '150ms',
+        'surface-enter': '250ms',
+        'surface-exit': '150ms',
+      },
+      transitionDelay: {
+        'state-change': '0ms',
+        'surface-enter': '0ms',
+        'surface-exit': '0ms',
+      },
+      transitionTimingFunction: {
+        'state-change': 'cubic-bezier(0.2, 0, 0, 1)',
+        'surface-enter': 'cubic-bezier(0.05, 0.7, 0.1, 1)',
+        'surface-exit': 'cubic-bezier(0.3, 0, 0.8, 0.15)',
+      },
+    },
+  },
+};
+if (typeof module !== 'undefined') module.exports = globalThis.tailwind.config;
+</script>
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600;700&amp;family=Instrument+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=block" rel="stylesheet">
+  <style>
+    .material-symbols-outlined {
+      display: inline-block;
+      width: 1em;
+      height: 1em;
+      line-height: 1 !important;
+      box-sizing: content-box;
+      overflow: hidden;
+      white-space: nowrap;
+      direction: ltr;
+      vertical-align: middle;
+    }
+  </style>
+</head>
+<body class="bg-dark-surface text-dark-on-surface font-body antialiased min-h-[884px] pb-40 select-none" data-stitch-vh="min-h-[884px]===min-h-screen">
+  <!-- Android System Status Bar Simulation -->
+  <div class="sticky top-0 z-30 bg-dark-surface/90 backdrop-blur-md px-6 pt-3 pb-2 flex items-center justify-between text-dark-on-surface text-body-sm font-medium">
+    <span>09:41</span>
+    <div class="flex items-center gap-2">
+      <span class="material-symbols-outlined text-body-sm">signal_cellular_4_bar</span>
+      <span class="material-symbols-outlined text-body-sm">wifi</span>
+      <span class="material-symbols-outlined text-body-sm">battery_full</span>
+    </div>
+  </div>
+
+  <div class="max-w-md mx-auto px-4 pt-2 flex flex-col gap-4">
+    <!-- Screen Header -->
+    <header class="flex items-center justify-between">
+      <div>
+        <h1 class="font-headline text-headline-sm text-dark-on-surface font-bold tracking-tight" data-design-text-token="headline-sm">Playlists</h1>
+        <p class="font-body text-body-sm text-dark-on-surface-variant" data-design-text-token="body-sm">8 collections • 246 songs total</p>
+      </div>
+      <!-- Create Playlist Button with Character Gradient -->
+      <button type="button" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-gradient-to-r from-coral-glow to-amber-glow text-white font-label text-label-sm font-semibold shadow-md shadow-coral-glow/20 hover:scale-105 active:scale-95 transition-all">
+        <span class="material-symbols-outlined text-body-sm text-white font-bold">add</span>
+        <span data-design-text-token="label-sm">New Playlist</span>
+      </button>
+    </header>
+
+    <!-- Quick Filter / Sort Row -->
+    <div class="flex items-center justify-between px-1">
+      <div class="flex items-center gap-2">
+        <span class="px-3 py-1 rounded-full bg-coral-glow/15 text-coral-glow border border-coral-glow/30 font-label text-label-sm font-medium">All (8)</span>
+        <span class="px-3 py-1 rounded-full bg-dark-surface-container text-dark-on-surface-variant font-label text-label-sm font-medium">Smart Mixes</span>
+        <span class="px-3 py-1 rounded-full bg-dark-surface-container text-dark-on-surface-variant font-label text-label-sm font-medium">Favorites</span>
+      </div>
+      <button type="button" class="w-8 h-8 rounded-full bg-dark-surface-container flex items-center justify-center text-dark-outline hover:text-dark-on-surface">
+        <span class="material-symbols-outlined text-title-lg">grid_view</span>
+      </button>
+    </div>
+
+    <!-- Playlists Grid -->
+    <main class="grid grid-cols-2 gap-3.5">
+      <!-- Playlist 1: Cyberdrive Overpass -->
+      <article class="p-3 rounded-2xl bg-dark-surface-container border border-coral-glow/30 hover:border-coral-glow transition-all flex flex-col gap-2.5 cursor-pointer group">
+        <div class="relative w-full aspect-square rounded-xl overflow-hidden shadow-md">
+          <img src="https://lh3.googleusercontent.com/aida/ALJJyrC0HzsGtiwV2vk4-pahmQVZ3UMtgoFcPPJtubzUa2jNYIQG5FWtB3M8fkS74kBhXGf6T3gmd52bXQdIBLtAFZm1ZqROy2MABNzFt8BzlTz0mAA5iSeiyRANMy4FfYuCX6YdmdernRgq--8_kMmV9UQAP1rT0Bm82P1DCojP8ZPvOvZn6qMhHK9uA64IA7dUc1U9Kb9vtYQ_v35ZeJzeX5m3tDQwsJglM47k_HxQGcg66v2R-dSLkcWK6g" alt="Cyberdrive Cover" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+          <div class="absolute bottom-2 left-2.5 right-2.5 flex items-center justify-between text-white">
+            <span class="font-label text-label-sm text-coral-glow font-bold">42 tracks</span>
+            <span class="font-label text-label-sm text-amber-glow tabular-nums">2h 45m</span>
+          </div>
+        </div>
+        <div class="flex items-start justify-between">
+          <div class="min-w-0 flex-1 pr-1">
+            <h2 class="font-title text-title-sm text-dark-on-surface font-semibold truncate" data-design-text-token="title-sm">Cyberdrive Overpass</h2>
+            <p class="font-body text-body-sm text-dark-on-surface-variant truncate" data-design-text-token="body-sm">Dark Synth &amp; Electro</p>
+          </div>
+          <button type="button" class="text-dark-outline hover:text-dark-on-surface p-0.5">
+            <span class="material-symbols-outlined text-title-lg">more_vert</span>
+          </button>
+        </div>
+      </article>
+
+      <!-- Playlist 2: Cosmic Meditation -->
+      <article class="p-3 rounded-2xl bg-dark-surface-container border border-dark-outline-variant/30 hover:border-cyan-glow transition-all flex flex-col gap-2.5 cursor-pointer group">
+        <div class="relative w-full aspect-square rounded-xl overflow-hidden shadow-md">
+          <img src="https://lh3.googleusercontent.com/aida/ALJJyrBxCUL7xIbcPEDyelJu0ojf3p5g1YG5USXdyW5DatB53zb5b_gcbgJVNvNME7LWOr0PbRY4nNkb1AN_cJKWsbIYlL2uun5pvBJGLt0PY59SSUEv-d8wvxizoEVA9n9pyVy03c-l4XBep0yEPSGFhlqaaxIp415ydpZYzqmMgDTCuhp9rsLEBLPuvo77dX-2AFIT7Hc-H-gKsY-yYXkgqRq47ztFMUGRqiaHx6BIVS2SYW5L9Qo" alt="Cosmic Meditation Cover" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+          <div class="absolute bottom-2 left-2.5 right-2.5 flex items-center justify-between text-white">
+            <span class="font-label text-label-sm text-cyan-glow font-bold">28 tracks</span>
+            <span class="font-label text-label-sm text-cyan-glow tabular-nums">1h 52m</span>
+          </div>
+        </div>
+        <div class="flex items-start justify-between">
+          <div class="min-w-0 flex-1 pr-1">
+            <h2 class="font-title text-title-sm text-dark-on-surface font-semibold truncate" data-design-text-token="title-sm">Deep Space Drift</h2>
+            <p class="font-body text-body-sm text-dark-on-surface-variant truncate" data-design-text-token="body-sm">Ambient Space Odyssey</p>
+          </div>
+          <button type="button" class="text-dark-outline hover:text-dark-on-surface p-0.5">
+            <span class="material-symbols-outlined text-title-lg">more_vert</span>
+          </button>
+        </div>
+      </article>
+
+      <!-- Playlist 3: Rainy Kyoto Coffee -->
+      <article class="p-3 rounded-2xl bg-dark-surface-container border border-dark-outline-variant/30 hover:border-amber-glow transition-all flex flex-col gap-2.5 cursor-pointer group">
+        <div class="relative w-full aspect-square rounded-xl overflow-hidden shadow-md">
+          <img src="https://lh3.googleusercontent.com/aida/ALJJyrDTqbuI32UYyU91B9xrkc8XjghoI-rNkYQE4TUgZOdsxFfGgupvCM_rJTSzKN9K_6maDISTPemYu0AE1Ke9uVhSHtP0rIH8gotTsVVvS8_kFJQQ50sGWpallIgWxQ-PszZ__nuzgq62afAXtRkpf5edS_E7PYrCo2L51Mi1H8vVBxpRiLOBymIjjyxYXeFwLAz0zpuYZSxToeIkRRUGXFlFvGu1iXkc-IAdl59hOB941cVVkw" alt="Rainy Kyoto Cover" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+          <div class="absolute bottom-2 left-2.5 right-2.5 flex items-center justify-between text-white">
+            <span class="font-label text-label-sm text-amber-glow font-bold">54 tracks</span>
+            <span class="font-label text-label-sm text-amber-glow tabular-nums">3h 10m</span>
+          </div>
+        </div>
+        <div class="flex items-start justify-between">
+          <div class="min-w-0 flex-1 pr-1">
+            <h2 class="font-title text-title-sm text-dark-on-surface font-semibold truncate" data-design-text-token="title-sm">Rainy Kyoto Lanterns</h2>
+            <p class="font-body text-body-sm text-dark-on-surface-variant truncate" data-design-text-token="body-sm">Lo-Fi Beats &amp; Rain</p>
+          </div>
+          <button type="button" class="text-dark-outline hover:text-dark-on-surface p-0.5">
+            <span class="material-symbols-outlined text-title-lg">more_vert</span>
+          </button>
+        </div>
+      </article>
+
+      <!-- Playlist 4: Nordic Pine Acoustics -->
+      <article class="p-3 rounded-2xl bg-dark-surface-container border border-dark-outline-variant/30 hover:border-coral-glow transition-all flex flex-col gap-2.5 cursor-pointer group">
+        <div class="relative w-full aspect-square rounded-xl overflow-hidden shadow-md">
+          <img src="https://lh3.googleusercontent.com/aida/ALJJyrACsmjKYyULPgNwEpJH04VHNpW8tRnYxz_TtZ6u6EDXthpZqBijhMvLZuHrhJzisNLDQyyLXv_V_cfVdgcANMRXtUUeRBpHSA_OyClnyr0QygKeLur9XmQeCXVribRKW7fF41cLmTdBNQJbpogRgc74eTIkmD77nT6S4SdS9oVGPRzz8BMTztPSpTXsmvaDsF6v3__EIKJVNEeVbKE13NsjFld-g6ZuCDaE9F7_6OLVRkD7XC23gg" alt="Nordic Pine Cover" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+          <div class="absolute bottom-2 left-2.5 right-2.5 flex items-center justify-between text-white">
+            <span class="font-label text-label-sm text-white font-bold">36 tracks</span>
+            <span class="font-label text-label-sm text-amber-glow tabular-nums font-semibold">2h 15m</span>
+          </div>
+        </div>
+        <div class="flex items-start justify-between">
+          <div class="min-w-0 flex-1 pr-1">
+            <h2 class="font-title text-title-sm text-dark-on-surface font-semibold truncate" data-design-text-token="title-sm">Nordic Echoes</h2>
+            <p class="font-body text-body-sm text-dark-on-surface-variant truncate" data-design-text-token="body-sm">Neoclassical Post-Rock</p>
+          </div>
+          <button type="button" class="text-dark-outline hover:text-dark-on-surface p-0.5">
+            <span class="material-symbols-outlined text-title-lg">more_vert</span>
+          </button>
+        </div>
+      </article>
+    </main>
+  </div>
+
+  <!-- Persistent Mini Player Above Bottom Navigation -->
+  <aside class="fixed bottom-16 inset-x-0 z-20 px-3">
+    <div class="max-w-md mx-auto p-2 rounded-2xl bg-dark-surface-container-high/95 backdrop-blur-xl border border-coral-glow/40 shadow-xl flex items-center gap-3">
+      <!-- Mini Artwork with Pulsing Ring -->
+      <a href="../now-playing/NowPlaying.html" class="relative w-11 h-11 rounded-xl overflow-hidden flex-shrink-0 ring-1 ring-coral-glow">
+        <img src="https://lh3.googleusercontent.com/aida/ALJJyrDjXPJsGsofT6Or13NVHENdxDkZ_2zu7Op-mRJWp0H1ftbO8VRCTIY2i81gTHYVTZcYBDl_OIXHbIXW4vKzmX-YYAmzMrKPUU4i5KJm_5yevY6Rzinsbtl7hgs3J0ZokKJgNVsr38eGj5L70eBjeaauUdPQ2ENgPmv076p6zhi_AOrBq5Ofw1rfUUTni2Yt5Q8gJoDnHspM8ixgakIwnKa4AyIwJWGFzi0WBX6iqFpMR_eaFDyCEDbWLg" alt="Neon Velocity" class="w-full h-full object-cover">
+      </a>
+      
+      <!-- Track Details -->
+      <a href="../now-playing/NowPlaying.html" class="flex-1 min-w-0">
+        <div class="font-title text-title-sm text-dark-on-surface font-semibold truncate" data-design-text-token="title-sm">Neon Velocity</div>
+        <div class="font-body text-body-sm text-coral-glow font-medium truncate" data-design-text-token="body-sm">Kavinsky &amp; Vector Seven</div>
+      </a>
+
+      <!-- Transport Buttons -->
+      <div class="flex items-center gap-1">
+        <button type="button" aria-label="Previous" class="p-1.5 text-dark-on-surface-variant hover:text-dark-on-surface">
+          <span class="material-symbols-outlined text-title-lg">skip_previous</span>
+        </button>
+        <button type="button" aria-label="Play/Pause" class="w-9 h-9 rounded-full bg-gradient-to-r from-coral-glow to-amber-glow text-white flex items-center justify-center shadow-md">
+          <span class="material-symbols-outlined text-body-sm" style="font-variation-settings: &#39;FILL&#39; 1;">pause</span>
+        </button>
+        <button type="button" aria-label="Next" class="p-1.5 text-dark-on-surface-variant hover:text-dark-on-surface">
+          <span class="material-symbols-outlined text-title-lg">skip_next</span>
+        </button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Native Android M3 Navigation Bar with 4 Sections -->
+  <nav class="fixed bottom-0 inset-x-0 z-30 bg-dark-surface-container border-t border-dark-outline-variant/30 px-3 py-2">
+    <div class="max-w-md mx-auto flex items-center justify-around">
+      <!-- Library -->
+      <a href="../music-library/MusicLibrary.html" class="flex flex-col items-center gap-1 group py-1">
+        <div class="w-14 h-7 rounded-full text-dark-on-surface-variant flex items-center justify-center group-hover:bg-dark-surface-container-high transition-colors">
+          <span class="material-symbols-outlined text-title-lg">library_music</span>
+        </div>
+        <span class="font-label text-label-sm text-dark-on-surface-variant group-hover:text-dark-on-surface font-medium" data-design-text-token="label-sm">Library</span>
+      </a>
+
+      <!-- Playlists (Active) -->
+      <a href="../playlists/Playlists.html" class="flex flex-col items-center gap-1 group py-1">
+        <div class="w-14 h-7 rounded-full bg-gradient-to-r from-coral-glow/20 to-amber-glow/20 text-coral-glow flex items-center justify-center border border-coral-glow/40">
+          <span class="material-symbols-outlined text-title-lg" style="font-variation-settings: &#39;FILL&#39; 1;">queue_music</span>
+        </div>
+        <span class="font-label text-label-sm text-coral-glow font-medium" data-design-text-token="label-sm">Playlists</span>
+      </a>
+
+      <!-- Rankings -->
+      <a href="../rankings/Rankings.html" class="flex flex-col items-center gap-1 group py-1">
+        <div class="w-14 h-7 rounded-full text-dark-on-surface-variant flex items-center justify-center group-hover:bg-dark-surface-container-high transition-colors">
+          <span class="material-symbols-outlined text-title-lg">leaderboard</span>
+        </div>
+        <span class="font-label text-label-sm text-dark-on-surface-variant group-hover:text-dark-on-surface font-medium" data-design-text-token="label-sm">Rankings</span>
+      </a>
+
+      <!-- Settings -->
+      <a href="../settings/Settings.html" class="flex flex-col items-center gap-1 group py-1">
+        <div class="w-14 h-7 rounded-full text-dark-on-surface-variant flex items-center justify-center group-hover:bg-dark-surface-container-high transition-colors">
+          <span class="material-symbols-outlined text-title-lg">settings</span>
+        </div>
+        <span class="font-label text-label-sm text-dark-on-surface-variant group-hover:text-dark-on-surface font-medium" data-design-text-token="label-sm">Settings</span>
+      </a>
+    </div>
+  </nav>
+
+
+</body></html>
